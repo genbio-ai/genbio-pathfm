@@ -1,5 +1,7 @@
 # GenBio-PathFM: A State-of-the-Art Foundation Model for Histopathology
 
+![Histpathology image.](resources/banner.jpg)
+
 GenBio-PathFM is a histopathology foundation model (FM) from [GenBio AI](https://genbio.ai/). 
 
 At the time of release, GenBio-PathFM is the strongest open-weight histopathology FM and the only state-of-the-art histopathology FM trained exclusively on publicly available data.

@@ -33,7 +33,7 @@ If you find our work useful, consider citing our paper:
 ```
 @article{kapse2026genbiopathfm,
   title={GenBio-PathFM: A State-of-the-Art Foundation Model for Histopathology},
-  author={Kapse, Saarthak and Aygun, Mehmet and Cole, Elijah and Lundberg, Emma and Song, Le and Xing, Eric P.},
+  author={Kapse, Saarthak and Aygün, Mehmet and Cole, Elijah and Lundberg, Emma and Song, Le and Xing, Eric P.},
   journal={bioRxiv},
   year={2026}
 }

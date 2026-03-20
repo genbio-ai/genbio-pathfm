@@ -10,7 +10,7 @@ The model weights are available on [HuggingFace](https://huggingface.co/genbio-a
 
 For more details:
 * [GenBio AI Blog Post](https://genbio.ai/genbio-pathfm)
-* [Paper](https://genbio.ai/papers/genbio-pathfm.pdf)
+* [Paper](https://www.biorxiv.org/content/10.64898/2026.03.17.712534v1)
 
 ## Abstract
 

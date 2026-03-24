@@ -1,0 +1,20 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["genbio_pathfm"]
+
+[project]
+name = "genbio-pathfm"
+version = "0.1.0"
+description = "GenBio-PathFM: A state-of-the-art foundation model for histopathology"
+readme = "README.md"
+license = { file = "LICENSE.txt" }
+requires-python = ">=3.9"
+dependencies = [
+    "torch>=2.0.0",
+    "torchvision",
+    "numpy>=1.24.0",
+    "pillow>=9.0.0",
+]

@@ -6,7 +6,11 @@ GenBio-PathFM is a histopathology foundation model (FM) from [GenBio AI](https:/
 
 At the time of release, GenBio-PathFM is the strongest open-weight histopathology FM and the only state-of-the-art histopathology FM trained exclusively on publicly available data.
 
-The model weights are available on [HuggingFace](https://huggingface.co/genbio-ai/genbio-pathfm). GenBio-PathFM is also available in [TRIDENT](https://github.com/mahmoodlab/TRIDENT). 
+The model weights are available on [HuggingFace](https://huggingface.co/genbio-ai/genbio-pathfm). 
+
+GenBio-PathFM is supported in the following open-source tools:
+* [TRIDENT](https://github.com/mahmoodlab/TRIDENT)
+* [PrePATH](https://github.com/birkhoffkiki/PrePATH)
 
 For more details:
 * [GenBio AI Blog Post](https://genbio.ai/genbio-pathfm)

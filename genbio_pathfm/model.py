@@ -607,8 +607,7 @@ class GenBio_PathFM_Inference(nn.Module):
         self.to(self.device).eval()                  # move the whole nn.Module
 
         self.transform = transforms.Compose([
-            transforms.Resize(224),
-            transforms.CenterCrop(224),
+            transforms.Resize((224,224)),
             transforms.ToTensor(),
             transforms.Normalize(mean=(0.697, 0.575, 0.728), std=(0.188, 0.240, 0.187)),
         ])

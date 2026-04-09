@@ -22,9 +22,83 @@ Recent advancements in histopathology foundation models (FMs) have largely been 
 
 ![Overview of training procedure for GenBio-PathFM.](resources/main_jedi_training.jpg)
 
-## Inference Example
+## Inference
 
-See [inference.py](genbio-pathfm/inference.py) for an example of loading the model and extracting an embedding. 
+### Option 1: HuggingFace AutoModel (recommended)
+ 
+The simplest way to use GenBio-PathFM is via HuggingFace `AutoModel` (tested on `transformers==4.57.1`):
+ 
+```python
+from transformers import AutoModel
+from torchvision import transforms
+import torch
+from PIL import Image
+ 
+# Load model
+model = AutoModel.from_pretrained("genbio-ai/genbio-pathfm", trust_remote_code=True)
+model.eval()
+ 
+# Transform
+transform = transforms.Compose([
+    transforms.Resize((224, 224)),
+    transforms.ToTensor(),
+    transforms.Normalize(
+        mean=(0.697, 0.575, 0.728),
+        std=(0.188, 0.240, 0.187),
+    ),
+])
+ 
+# Inference
+image = Image.open("path/to/image.png").convert("RGB")
+x = transform(image).unsqueeze(0)  # [1, 3, 224, 224]
+ 
+with torch.no_grad():
+    cls_features = model(x)  # [1, 4608]
+    # Or with patch tokens:
+    cls_features, patch_features = model.forward_with_patches(x)  # [1, 4608], [1, 196, 4608]
+```
+
+### Option 2: Using the pip package
+
+```bash
+pip install git+https://github.com/genbio-ai/genbio-pathfm.git
+```
+
+```python
+from genbio_pathfm.model import GenBio_PathFM_Inference as build_model
+from huggingface_hub import hf_hub_download
+from torchvision import transforms
+import torch
+from PIL import Image
+ 
+weights_path = hf_hub_download(
+    repo_id="genbio-ai/genbio-pathfm",
+    filename="model.pth",
+)
+ 
+# Load model
+model = build_model(weights_path, device="cpu")
+model.eval()
+ 
+# Transform
+transform = transforms.Compose([
+    transforms.Resize((224, 224)),
+    transforms.ToTensor(),
+    transforms.Normalize(
+        mean=(0.697, 0.575, 0.728),
+        std=(0.188, 0.240, 0.187),
+    ),
+])
+ 
+# Inference
+image = Image.open("path/to/image.png").convert("RGB")
+x = transform(image).unsqueeze(0)  # [1, 3, 224, 224]
+ 
+with torch.no_grad():
+    cls_features = model(x)  # [1, 4608]
+    # Or with patch tokens:
+    cls_features, patch_features = model.forward_with_patches(x)  # [1, 4608], [1, 196, 4608]
+```
 
 ## License
 
